@@ -1,0 +1,60 @@
+{
+    "name": "konekt/search",
+    "description": "Laravel package to search through multiple Eloquent models. Supports pagination, eager loading relations, single/multiple columns, sorting and scoped queries.",
+    "keywords": [
+        "protonemedia",
+        "konekt",
+        "laravel",
+        "search",
+        "eloquent"
+    ],
+    "homepage": "https://github.com/artkonekt/search",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Pascal Baljet",
+            "email": "pascal@protone.media",
+            "role": "Developer"
+        },
+        {
+            "name": "Attila Fulop"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "ext-pdo": "*",
+        "laravel/framework": "^9.0|^10.0|^11.0",
+        "nesbot/carbon": "^2.66|^3.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.4.4",
+        "orchestra/testbench": "^7.0|^8.0|^9.0",
+        "phpunit/phpunit": "^9.5|^10.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Konekt\\Search\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Konekt\\Search\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Konekt\\Search\\Providers\\SearchServiceProvider"
+            ]
+        }
+    }
+}

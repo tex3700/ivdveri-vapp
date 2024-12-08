@@ -1,0 +1,47 @@
+{
+    "name": "vanilo/adyen",
+    "description": "Adyen Payment Gateway Support for Vanilo (Laravel)",
+    "type": "library",
+    "keywords": ["laravel", "vanilo", "adyen", "payments"],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Attila Fulop"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "ext-json": "*",
+        "konekt/concord": "^1.13",
+        "konekt/enum": "^4.0",
+        "nesbot/carbon": "^2.62.1|^3.0",
+        "vanilo/payment": "^4.0",
+        "vanilo/contracts": "^4.0",
+        "adyen/php-api-library": "^10.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vanilo\\Adyen\\": "src"
+        }
+    },
+    "require-dev": {
+        "ext-sqlite3": "*",
+        "orchestra/testbench": "^8.0|^9.0",
+        "phpunit/phpunit" : "^10.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vanilo\\Adyen\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "3.0.x-dev"
+        }
+    }
+}

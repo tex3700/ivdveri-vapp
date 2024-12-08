@@ -1,0 +1,66 @@
+{
+    "name": "konekt/appshell",
+    "description": "Foundation for Laravel business applications",
+    "type": "library",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "keywords": ["laravel", "concord", "concord-box"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Attila Fulop",
+            "homepage": "https://github.com/fulopattila122"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/artkonekt/appshell"
+    },
+    "require": {
+        "php": "^8.2",
+        "ext-json": "*",
+        "konekt/concord": "^1.15",
+        "konekt/customer": "^3.1",
+        "konekt/address": "^3.4",
+        "konekt/user": "^3.0",
+        "konekt/acl": "^2.0",
+        "konekt/menu": "^1.9",
+        "konekt/gears": "^1.12",
+        "konekt/enum": "^4.1",
+        "konekt/enum-eloquent": "^1.8.1",
+        "konekt/xtend": "^1.1",
+        "konekt/html": "^6.5",
+        "laracasts/flash": "^3.2.1",
+        "cviebrock/eloquent-sluggable": "^10.0|^11.0",
+        "diglactic/laravel-breadcrumbs": "^8.0|^9.0",
+        "laravel/framework": "^10.0|^11.0"
+    },
+    "require-dev": {
+        "ext-sqlite3": "*",
+        "phpunit/phpunit": "^10.0",
+        "orchestra/testbench": "^8.0|^9.0",
+        "mockery/mockery": "^1.6.2"
+    },
+    "conflict": {
+      "doctrine/dbal": ">=4.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "Konekt\\AppShell\\": "src"
+        },
+        "files": [
+            "src/Support/helpers.php",
+            "src/Support/theme.php",
+            "src/Support/icon.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Konekt\\AppShell\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "4.0.x-dev"
+        }
+    }
+}

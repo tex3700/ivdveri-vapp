@@ -1,0 +1,43 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+  repository_dispatch:
+    types: [run_tests]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        php: [ '8.2', '8.3' ]
+        laravel: [ '10.x', '11.x' ]
+        dependencies: [ 'highest', 'lowest' ]
+    name: PHP ${{ matrix.php }} Laravel ${{ matrix.laravel }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Installing PHP
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, json, sqlite3
+          tools: composer:v2
+      - name: Lock Laravel Version
+        run: composer require "laravel/framework:${{ matrix.laravel }}" --no-update --dev -v
+      - name: Install dependencies
+        uses: "ramsey/composer-install@v1"
+        with:
+          dependency-versions: "${{ matrix.dependencies }}"
+          composer-options: "--prefer-dist --no-cache"
+      - name: List Installed Dependencies
+        run: composer show -D
+      - name: Create Database
+        run: mkdir -p database && touch database/database.sqlite
+      - name: Run Tests
+        run: php vendor/bin/phpunit --testdox
+        env:
+          PAYPAL_CLIENT_ID: ${{ secrets.PAYPAL_CLIENT_ID }}
+          PAYPAL_SECRET: ${{ secrets.PAYPAL_SECRET }}

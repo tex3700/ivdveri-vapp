@@ -4,7 +4,8 @@
 /storage/*.key
 /storage/medialibrary
 /storage/netopia
-/vendor
+!vendor/
+/vendor/*
 !/vendor/konekt
 !/vendor/vanilo
 /.idea

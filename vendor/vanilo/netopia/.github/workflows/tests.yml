@@ -1,0 +1,50 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+  repository_dispatch:
+    types: [run_tests]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        php: ['8.2', '8.3']
+        laravel: ['10.43', '10.48', '11.0', '11.9']
+        vanilo: ['4.1']
+    name: PHP ${{ matrix.php }} Laravel ${{ matrix.laravel }} Vanilo ${{ matrix.vanilo }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Installing PHP
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, json, sqlite3
+          tools: composer:v2
+      - name: Lock Package Versions
+        run: |
+          composer require "vanilo/framework:${{ matrix.vanilo }}.*" --no-update -v
+          composer require "laravel/framework:${{ matrix.laravel }}.*" --no-update -v
+      - name: Composer Install
+        run: composer install --prefer-dist --no-progress --no-interaction
+      - name: Create Database
+        run: mkdir -p database && touch database/database.sqlite
+      - name: Enable Legacy Ciphers in OpenSSL 3
+        run: |
+          cp /etc/ssl/openssl.cnf ./custom_openssl.cnf
+          sudo sed -i '/^\default = default_sect/a legacy = legacy_sect' ./custom_openssl.cnf
+          sudo sed -i '/^\[default_sect\]/a activate = 1' ./custom_openssl.cnf
+          sudo echo "[legacy_sect]" >> ./custom_openssl.cnf
+          sudo echo "activate = 1" >> ./custom_openssl.cnf
+          OPENSSL_CONF="$(pwd)/custom_openssl.cnf"
+          echo $OPENSSL_CONF
+          cat $OPENSSL_CONF
+          echo "OPENSSL_CONF=${OPENSSL_CONF}" >> $GITHUB_ENV
+      - name: Run Tests
+        run: |
+          echo $OPENSSL_CONF
+          php vendor/bin/phpunit --testdox

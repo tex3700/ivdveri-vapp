@@ -1,0 +1,43 @@
+{
+    "name": "konekt/laravel-migration-compatibility",
+    "description": "Library to help migrations to figure out whether a related field is int or bigInt",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "keywords": ["laravel", "migration", "database", "konekt", "artkonekt"],
+    "support": {
+        "source": "https://github.com/artkonekt/laravel-migration-compatibility"
+    },
+    "authors": [
+        {
+            "name": "Attila Fulop",
+            "homepage": "https://github.com/fulopattila122"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "ext-PDO": "*",
+        "illuminate/database": "^10.0|^11.0",
+        "konekt/enum": "^2.1 | ^3.0 | ^4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0",
+        "orchestra/testbench": "^8.0|^9.0"
+    },
+    "autoload": {
+        "psr-4": { "Konekt\\LaravelMigrationCompatibility\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Konekt\\LaravelMigrationCompatibility\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Konekt\\LaravelMigrationCompatibility\\LaravelMigrationCompatibilityProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,57 @@
+{
+    "name": "vanilo/paypal",
+    "description": "PayPal Payment Gateway Support for Vanilo (Laravel)",
+    "type": "library",
+    "keywords": ["laravel", "vanilo", "paypal", "payments"],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Attila Fulop",
+            "homepage": "https://github.com/fulopattila122"
+        },
+        {
+            "name": "Hunor Kedves",
+            "homepage": "https://github.com/kedves"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/vanilophp/paypal"
+    },
+    "require": {
+        "php": "^8.2",
+        "ext-json": "*",
+        "konekt/concord": "^1.13",
+        "laravel/framework": "^10.0|^11.0",
+        "vanilo/payment": "^4.0",
+        "vanilo/contracts": "^4.0",
+        "ext-dom": "*",
+        "ext-openssl": "*",
+        "ext-simplexml": "*",
+        "paypal/paypal-checkout-sdk": "^1.0.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vanilo\\Paypal\\": "src"
+        }
+    },
+    "require-dev": {
+        "ext-sqlite3": "*",
+        "orchestra/testbench": "^8.0|^9.0",
+        "phpunit/phpunit" : "^10.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vanilo\\Paypal\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0.x-dev"
+        }
+    }
+}

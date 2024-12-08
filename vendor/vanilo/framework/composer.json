@@ -1,0 +1,77 @@
+{
+    "name": "vanilo/framework",
+    "description": "E-commerce Framework for Laravel",
+    "type": "library",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Attila Fulop",
+            "homepage": "https://github.com/fulopattila122"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/vanilophp/framework/issues"
+    },
+    "require": {
+        "php": "^8.2",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "laravel/framework": "^10.43|^11.0",
+        "konekt/enum": "^4.2",
+        "konekt/concord": "^1.13",
+        "spatie/laravel-medialibrary": "^11.0",
+        "cviebrock/eloquent-sluggable": "^10.0|^11.0",
+        "konekt/laravel-migration-compatibility": "^1.6",
+        "konekt/address": "^3.3.1",
+        "konekt/customer": "^3.0",
+        "konekt/user": "^3.0",
+        "konekt/search": "^1.2",
+        "nette/schema": "^1.2.5"
+    },
+    "replace": {
+        "vanilo/adjustments": "self.version",
+        "vanilo/cart": "self.version",
+        "vanilo/category": "self.version",
+        "vanilo/channel": "self.version",
+        "vanilo/checkout": "self.version",
+        "vanilo/contracts": "self.version",
+        "vanilo/links": "self.version",
+        "vanilo/master-product": "self.version",
+        "vanilo/order": "self.version",
+        "vanilo/payment": "self.version",
+        "vanilo/product": "self.version",
+        "vanilo/properties": "self.version",
+        "vanilo/shipment": "self.version",
+        "vanilo/support": "self.version",
+        "vanilo/taxes": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vanilo\\": "src"
+        },
+        "files": [
+            "src/Links/Support/helpers.php",
+            "src/Foundation/Support/helpers.php"
+        ]
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0|^9.0",
+        "phpunit/phpunit" : "^10.0",
+        "laravel/legacy-factories": "^1.0.4"
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "aliases": {
+                "Cart": "Vanilo\\Cart\\Facades\\Cart"
+            }
+        },
+        "branch-alias": {
+            "dev-master": "4.1.x-dev"
+        }
+    }
+}
